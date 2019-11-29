@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const dbConnection = sqlite.open('banco.sqlite', { Promise })
 
+const port = process.env.PORT || 3333;
+
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -91,7 +93,7 @@ const init = async () => {
 
 init();
 
-app.listen(3333, (error) => {
+app.listen(port, (error) => {
   if(error) {
     console.log('Error starting server');
   } else {
